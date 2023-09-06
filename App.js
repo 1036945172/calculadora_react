@@ -19,7 +19,7 @@ export default function App() {
       <Banner imagename={mimage}></Banner>
     <View style={{flex:4, backgroundColor:'gray', width:'100%',borderColor:"blue", alignItems:'center',
     justifyContent:'center'}}>
-      <text>Calculadora</text>
+      <text>Calculadora:</text>
       <text>Valor 1</text>
       <text>Valor 2</text>
       <TextInput
