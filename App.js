@@ -14,6 +14,26 @@ export default function App() {
   let mymess = "Este es el pie de la GUI";
   let mimage = "calculadora1.jpg"
   //metodos 
+let calculate = (operator)=>{
+  let mresult = 0
+  let mvalue1 = parseFloat(value1)
+  let mvalue2 = parseFloat(value2)
+  switch(operator){
+    case "+":
+      mresult = mvalue1 + mvalue2;
+      break;
+      case "-":
+        mresult = mvalue1 - mvalue2;
+        break;
+        case "*":
+          mresult = mvalue1 * mvalue2;
+          break;
+          case "/":
+            mresult = mvalue1 / mvalue2;
+            break;
+  }
+  setresult(mresult); //Actualizando la variable resultado
+}
   return (
     <View style={styles.container}>
       <Banner imagename={mimage}></Banner>
@@ -21,27 +41,59 @@ export default function App() {
     justifyContent:'center'}}>
       <text>Calculadora:</text>
       <text>Valor 1</text>
-      <text>Valor 2</text>
       <TextInput
-        placeholder='Ingrese valor 2:'
+      laber = 'Valor 1'
+        onChangeText={value1=> setvalue1(value1)}
+        value={value1}
+        style={{backgroundColor: 'powderblue'}}
+        left={<TextInput.Icon icon="numeric"/>}
+        />
+         <text>Valor 2</text>
+      <TextInput
+      laber = 'Valor 2'
         onChangeText={value1=> setvalue1(value2)}
         value={value2}
-        style={styles.tinput}
+        style={{backgroundColor: 'pink'}}
+        left={<TextInput.Icon icon="calculator"/>}
         />
-        <view style={{flexDirection:'row'}}>
-          <TouchableOpacity
-            style={{backgroundColor:'red',padding:15, borderRadius:20}}
-            >
-              <text>+</text>
-          </TouchableOpacity>
-        </view>
-    </View>
-    <view style={{flex:1, alignItems:'center', justifyContent:'center'}}> 
+
+        <text>Resultado</text>
+
+        
+        <view style={{flexDirection:'row', margintop:20}}>
+          <button>
+          icon="multiplication"
+          mode = "contaided"
+          onpress={()=>calculate("*")}
+          Multiplicar
+          </button>
+          <button>
+          icon="division"
+          mode = "contaided"
+          onpress={()=>calculate("/")}
+          Dividir
+          </button>
+          </view>
+    <view style={{flexDirection: 'row', margintop:20}}>
+      <button>
+        icon = "close-circle-outline"
+        node = "contained"
+        onpress={()=>{
+          setvalue1('')
+          setvalue2('')
+          setresult('')
+        }}
+        Limpiar
+      </button>
+    </view>
+    </view>
+    <view style={{flex: 1, alignItems:'center', justifyContent:'center'}}> 
        <footer message='Este es el pie'></footer>
      </view>
     </View>
   );
-}
+
+
 
 
 
