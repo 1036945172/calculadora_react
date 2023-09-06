@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import { StyleSheet, Text, View,  Button,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import Banner from './components/Banner';
 import Footer from './components/Footer';
@@ -7,9 +7,9 @@ import {styles, myimage} from './assets/styles/styles1'
 
 export default function App() {
   //states
-  const [value1, setvalue1]=useState('');
-  const [value2, setvalue2]=useState('');
-  const [result, setresult]=useState('');
+  const [value1, setvalue1]= useState('');
+  const [value2, setvalue2]= useState('');
+  const [result, setresult]= useState('');
 
   let mymess = "Este es el pie de la GUI";
   let mimage = "calculadora1.jpg"
@@ -22,78 +22,90 @@ let calculate = (operator)=>{
     case "+":
       mresult = mvalue1 + mvalue2;
       break;
-      case "-":
-        mresult = mvalue1 - mvalue2;
+    case "-":
+      mresult = mvalue1 - mvalue2;
+      break;
+    case "*":
+        mresult = mvalue1 * mvalue2;
         break;
-        case "*":
-          mresult = mvalue1 * mvalue2;
-          break;
-          case "/":
-            mresult = mvalue1 / mvalue2;
-            break;
+    case "/":
+        mresult = mvalue1 / mvalue2;
+        break;
   }
   setresult(mresult); //Actualizando la variable resultado
 }
-  return (
+return (
     <View style={styles.container}>
       <Banner imagename={mimage}></Banner>
-    <View style={{flex:4, backgroundColor:'gray', width:'100%',borderColor:"blue", alignItems:'center',
-    justifyContent:'center'}}>
-      <text>Calculadora:</text>
-      <text>Valor 1</text>
-      <TextInput
-      laber = 'Valor 1'
-        onChangeText={value1=> setvalue1(value1)}
-        value={value1}
-        style={{backgroundColor: 'powderblue'}}
-        left={<TextInput.Icon icon="numeric"/>}
+      <View style={{flex:4, backgroundColor:'gray', width:'100%',borderColor:"blue", alignItems:'center',justifyContent:'center'}}>
+        <text>Calculadora:</text>
+        <text>Valor 1</text>
+        <TextInput
+          laber = 'Valor 1'
+          onChangeText={value1=> setvalue1(value1)}
+          value={value1}
+          style={{backgroundColor: 'powderblue'}}
+          left={<TextInput.Icon icon="numeric"/>}
         />
-         <text>Valor 2</text>
-      <TextInput
-      laber = 'Valor 2'
-        onChangeText={value1=> setvalue1(value2)}
-        value={value2}
-        style={{backgroundColor: 'pink'}}
-        left={<TextInput.Icon icon="calculator"/>}
+        <text>Valor 2</text>
+        <TextInput
+            laber = 'Valor 2'
+            onChangeText={value2=> setvalue2(value2)}
+            value={value2}
+            style={{backgroundColor: 'pink'}}
+            left={<TextInput.Icon icon="calculator"/>}
         />
 
         <text>Resultado</text>
-
-        
-        <view style={{flexDirection:'row', margintop:20}}>
-          <button>
-          icon="multiplication"
-          mode = "contaided"
-          onpress={()=>calculate("*")}
-          Multiplicar
+        <text>{parseFloat(result).toFixed(1)}</text>
+        <View style={{flexDirection:'row', margintop:20}}>
+          <button
+              icon="plus"
+              mode="contained"
+              onpress={()=>calculate("+")}>
+            Sumar
           </button>
-          <button>
-          icon="division"
-          mode = "contaided"
-          onpress={()=>calculate("/")}
-          Dividir
+          <button
+            icon="minus"
+            mode = "contained"
+            onpress={()=>calculate("-")}>
+          Restar
           </button>
-          </view>
-    <view style={{flexDirection: 'row', margintop:20}}>
-      <button>
-        icon = "close-circle-outline"
-        node = "contained"
-        onpress={()=>{
-          setvalue1('')
-          setvalue2('')
-          setresult('')
-        }}
-        Limpiar
+        </View>
+        <View style={{flexDirection: 'row', margintop:20}}>
+          <button
+            icon="multiplication"
+            mode="contained"
+            onpress={()=>calculate("*")}>
+        Multiplicar
       </button>
-    </view>
-    </view>
-    <view style={{flex: 1, alignItems:'center', justifyContent:'center'}}> 
-       <footer message='Este es el pie'></footer>
-     </view>
+      <button
+        icon="division"
+        mode="contained"
+        onpress={()=>calculate("/")}>
+        Dividir
+      </button>
     </View>
+    <View style={{flexDirection: 'row',marginTop:20}}>
+      <button
+        icon="close-circle-outline"
+        mode="contained"
+        onpress={() =>{
+          setvalue1(``)
+          setvalue2(``)
+          setresult(``)
+          }}>
+          Limpiar
+      </button>
+    </View>
+  </View>
+  <View style={{flex: 1, alignItems:'center', justifyContent:'center'}}> 
+       <footer message="Este es el pie"></footer>
+  </View>
+</View>
   );
-
-
+}
+        
 
 
 
