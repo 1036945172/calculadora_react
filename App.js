@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { View, Text} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import Banner from './components/Banner';
 import Footer from './components/Footer';
@@ -31,8 +31,10 @@ let calculate = (operator)=>{
     case "/":
         mresult = mvalue1 / mvalue2;
         break;
+    default:
+      break;    
   }
-  setresult(mresult); //Actualizando la variable resultado
+  setresult(mresult.toFixed(1)); //Actualizando la variable resultado
 }
 return (
     <View style={styles.container}>
@@ -41,62 +43,66 @@ return (
         <text>Calculadora:</text>
         <text>Valor 1</text>
         <TextInput
-          laber = 'Valor 1'
+          label = 'Valor 1'
           onChangeText={value1=> setvalue1(value1)}
           value={value1}
           style={{backgroundColor: 'powderblue'}}
-          left={<TextInput.Icon icon="numeric"/>}
+          left={<TextInput.Icon name="numeric"/>}
         />
         <text>Valor 2</text>
         <TextInput
-            laber = 'Valor 2'
+            label = 'Valor 2'
             onChangeText={value2=> setvalue2(value2)}
             value={value2}
             style={{backgroundColor: 'pink'}}
-            left={<TextInput.Icon icon="calculator"/>}
+            left={<TextInput.Icon name="calculator"/>}
         />
 
         <text>Resultado</text>
-        <text>{parseFloat(result).toFixed(1)}</text>
+        <text>{result}</text>
         <View style={{flexDirection:'row', margintop:20}}>
-          <button
+          <Button
               icon="plus"
               mode="contained"
-              onpress={()=>calculate("+")}>
+              onPress={()=>calculate("+")}
+          >
             Sumar
-          </button>
-          <button
+          </Button>
+          <Button
             icon="minus"
             mode = "contained"
-            onpress={()=>calculate("-")}>
+            onPress={()=>calculate("-")}
+          >
           Restar
-          </button>
+          </Button>
         </View>
         <View style={{flexDirection: 'row', margintop:20}}>
-          <button
+          <Button
             icon="multiplication"
             mode="contained"
-            onpress={()=>calculate("*")}>
+            onPress={()=>calculate("*")}
+          >
         Multiplicar
-      </button>
-      <button
+      </Button>
+      <Button
         icon="division"
         mode="contained"
-        onpress={()=>calculate("/")}>
+        onPress={()=>calculate("/")}
+      >
         Dividir
-      </button>
+      </Button>
     </View>
     <View style={{flexDirection: 'row',marginTop:20}}>
-      <button
+      <Button
         icon="close-circle-outline"
         mode="contained"
-        onpress={() =>{
+        onPress={() =>{
           setvalue1(``)
           setvalue2(``)
           setresult(``)
           }}>
           Limpiar
-      </button>
+      </Button>
     </View>
   </View>
   <View style={{flex: 1, alignItems:'center', justifyContent:'center'}}> 
