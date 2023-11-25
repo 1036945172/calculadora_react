@@ -32,10 +32,7 @@ let calculate = (operator)=>{
         mresult = mvalue1 / mvalue2;
         break;
     default:
-      break;   
-      case "%":
-        mresult = mvalue1 * (mvalue2 / 100);
-        break; 
+      break; 
   }
   setresult(mresult.toFixed(1)); //Actualizando la variable resultado
 }
@@ -96,13 +93,6 @@ return (
       </Button>
     </View>
     <View style={{flexDirection: 'row',marginTop:20}}>
-      <Button
-      icon="percent"
-      mode="contained"
-      onPress={() => calculate("%")}
-      >
-        %
-      </Button>
       <Button
         icon="close-circle-outline"
         mode="contained"
