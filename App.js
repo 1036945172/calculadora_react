@@ -94,6 +94,13 @@ return (
     </View>
     <View style={{flexDirection: 'row',marginTop:20}}>
       <Button
+      icon="percent"
+      mode="contained"
+      onPress={() => calculate("%")}
+      >
+        %
+      </Button>
+      <Button
         icon="close-circle-outline"
         mode="contained"
         onPress={() =>{
