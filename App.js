@@ -32,7 +32,10 @@ let calculate = (operator)=>{
         mresult = mvalue1 / mvalue2;
         break;
     default:
-      break;    
+      break;   
+      case "%":
+        mresult = mvalue1 * (mvalue2 / 100);
+        break; 
   }
   setresult(mresult.toFixed(1)); //Actualizando la variable resultado
 }
