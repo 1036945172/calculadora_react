@@ -59,7 +59,7 @@ return (
         />
 
         <text>Resultado</text>
-        <text>{result}</text>
+        <text style={{ color: 'red', fontWeight: 'bold'}}>{result}</text>
         <View style={{flexDirection:'row', margintop:20}}>
           <Button
               icon="plus"
