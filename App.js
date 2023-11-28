@@ -106,7 +106,7 @@ return (
     </View>
   </View>
   <View style={{flex: 1, alignItems:'center', justifyContent:'center'}}> 
-       <footer message="Este es el pie"></footer>
+       <footer message="Este es el pie">Has tus cuentas basicas</footer>
   </View>
 </View>
   );
